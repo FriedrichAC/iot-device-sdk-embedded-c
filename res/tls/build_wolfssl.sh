@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 2018-2019 Google LLC
+# Copyright 2018-2020 Google LLC
 #
 # This is part of the Google Cloud IoT Device SDK for Embedded C.
 # It is licensed under the BSD 3-Clause license; you may not use this file
@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-supported_wolfssl_version="v3.15.3-stable"
+supported_wolfssl_version="v3.15.7-stable"
 
 # Helper function to exit with error in a consistent manner.
 exit_with_error() {

@@ -1,4 +1,4 @@
-# Copyright 2019 Google LLC
+# Copyright 2019-2020 Google LLC
 #
 # This is part of the Google Cloud IoT Device SDK for Embedded C.
 # It is licensed under the BSD 3-Clause license; you may not use this file
@@ -27,6 +27,9 @@ CONFIG_ZEPHYR_MAX          =memory_fs-posix_platform-tls_bsp-memory_limiter
 # CONFIG for ARM
 CONFIG_DUMMY_MAX           =memory_fs-memory_limiter
 CONFIG_DUMMY_MIN           =memory_fs
+
+# CONFIG for CC3220SF presets
+CONFIG_CC3220SF            =memory_fs-tls_bsp
 
 # TARGET presets
 TARGET_STATIC_DEV          =-static-debug
@@ -103,6 +106,24 @@ else ifeq ($(PRESET), ARM_REL)
     TARGET = $(TARGET_STATIC_REL)
     IOTC_BSP_PLATFORM = dummy
     IOTC_TARGET_PLATFORM = arm-linux
+
+# -------------------------------------------------------
+# Texas Instruments CC3220SF
+else ifeq ($(PRESET), CC3220SF)
+    CONFIG = $(CONFIG_CC3220SF)
+    TARGET = $(TARGET_STATIC_REL)
+    IOTC_BSP_PLATFORM = cc3220sf
+    IOTC_TARGET_PLATFORM = cc3220sf
+    else ifeq ($(PRESET), CC3220SF_DEBUG)
+    CONFIG = $(CONFIG_CC3220SF)
+    TARGET = $(TARGET_STATIC_DEV)
+    IOTC_BSP_PLATFORM = cc3220sf
+    IOTC_TARGET_PLATFORM = cc3220sf
+else ifeq ($(PRESET), CC3220SF_TLS_SOCKET)
+    CONFIG = $(CONFIG_CC3220SF_TLS_SOCKET)
+    TARGET = $(TARGET_STATIC_REL)
+    IOTC_BSP_PLATFORM = cc3220sf
+    IOTC_TARGET_PLATFORM = cc3220sf
 
 # -------------------------------------------------------
 # Fuzz Tests
