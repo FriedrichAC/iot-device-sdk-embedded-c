@@ -48,7 +48,11 @@ int iotc_itests_main(int argc, char const* argv[])
 {
   iotc_test_init(argc, argv);
 
-  // report test start
+  /* caller supplied custom hostURL and port number  */
+  /* Example: */
+  /*setHostNameAndPort("us-central1-mqtt.clearblade.com", "443");*/
+  
+    // report test start
   iotc_test_report_result(
       iotc_test_load_level ? "iotc_itest_id_l1" : "iotc_itest_id_l0",
       iotc_test_load_level ? "xi1" : "xi", 1, 0);

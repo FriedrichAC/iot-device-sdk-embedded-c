@@ -1,11 +1,11 @@
 # Zephyr RTOS example
 
-This example uses the Google Cloud IoT Device SDK for Embedded C to connect a Zephyr native_posix board application to the [Google Cloud IoT Core MQTT bridge](https://cloud.google.com/iot/docs/how-tos/mqtt-bridge#iot-core-mqtt-auth-run-cpp).
+This example uses the ClearBlade Cloud IoT Device SDK for Embedded C to connect a Zephyr native_posix board application to the [ClearBlade Cloud IoT Core MQTT bridge](https://cloud.google.com/iot/docs/how-tos/mqtt-bridge#iot-core-mqtt-auth-run-cpp).
 
 ## Getting started
 Follow the steps below to connect the Zephyr application to the MQTT bridge.
 
-Before you begin, generate a [public/private key pair](https://cloud.google.com/iot/docs/how-tos/credentials/keys), store the private key in the `examples/zephyr_native_posix/zephyr` directory, and name the key `ec_private.pem`.
+Before you begin, generate a [public/private key pair](https://clearblade.atlassian.net/wiki/spaces/IC/pages/2202763333/Creating+key+pairs), store the private key in the `examples/zephyr_native_posix/zephyr` directory, and name the key `ec_private.pem`.
 
 1. Run `make PRESET=ZEPHYR` in the root directory of the repository. This command includes `git clone` of the Zephyr repository, sets Zephyr required environment variables, and auto-generates `.h` files that the Zephyr BSP requries.
 
@@ -24,6 +24,14 @@ zephyr/zephyr.exe -testargs -p <i><b>PROJECT_ID</b></i> -d projects/<i><b>PROJEC
 
 ## Troubleshooting
 
+### Installing Dependecies 
+
+If you're encountering the error `Configuring incomplete, errors occurred!` then you may be missing build requirements. Install the `device-tree-compiler` and `gperf` packages using the appropriate tools for your environment. For example, in Linux you can use `apt-get` as follows:
+
+```bash
+sudo apt-get install device-tree-compiler gperf
+```
+
 ### Setting up internet access on the native_posix board
 By default, the Zephyr application claims IP 192.0.2.1 and is in the same subnet with the `zeth` virtual network adapter at IP 192.0.2.2. This subnet must be connected to the internet. 
 
@@ -39,4 +47,4 @@ Another way to set environment variables is by permanently set up the Zephyr env
 
 ### Validating Cloud IoT Core credentials
 
-Build the [MQTT client example](https://github.com/GoogleCloudPlatform/iot-device-sdk-embedded-c/tree/docs_updates/examples/iot_core_mqtt_client) to validate your Cloud IoT Core credentials.
+Build the [MQTT client example](https://github.com/ClearBlade/iot-device-sdk-embedded-c/tree/master/examples/iot_core_mqtt_client) to validate your Cloud IoT Core credentials.
