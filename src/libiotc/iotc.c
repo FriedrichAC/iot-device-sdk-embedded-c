@@ -385,11 +385,11 @@ if(NULL != client_id){
 char *europewest1 = "europe-west1";
 char *asiaeast1 = "asia-east1";
 
-if (strcasestr(local_client_id, europewest1) != NULL) {
+if (strstr(local_client_id, europewest1) != NULL) {
     host_name_local = IOTC_MQTT_HOST_ACCESSOR_EUROPE_WEST1.name;
     port_val_local = IOTC_MQTT_HOST_ACCESSOR_EUROPE_WEST1.port;
 }
-else if (strcasestr(local_client_id, asiaeast1) != NULL) {
+else if (strstr(local_client_id, asiaeast1) != NULL) {
     host_name_local = IOTC_MQTT_HOST_ACCESSOR_ASIA_EAST1.name;
     port_val_local = IOTC_MQTT_HOST_ACCESSOR_ASIA_EAST1.port;
 }
